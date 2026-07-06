@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
 import blackImg from '../assets/black_tea.webp';
 import greenImg from '../assets/green_tea.webp';
 import orthodoxImg from '../assets/orthodox.webp';
@@ -15,6 +15,7 @@ const heroProducts = [
 
 const Hero = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [showText, setShowText] = useState(true);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -34,6 +35,10 @@ const Hero = () => {
           muted 
           playsInline
           className="w-full h-full object-cover"
+          onTimeUpdate={(e) => {
+            const shouldShow = e.target.currentTime < 8;
+            setShowText(prev => prev !== shouldShow ? shouldShow : prev);
+          }}
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
@@ -41,23 +46,29 @@ const Hero = () => {
       </div>
 
       <div className="relative z-10 text-center text-white px-6 w-full max-w-7xl mx-auto flex flex-col justify-center items-center h-full">
-        <motion.h1 
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-6"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
+        <motion.div 
+          animate={{ opacity: showText ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="flex flex-col items-center justify-center w-full"
         >
-          Crafting Nepal's <br/> Finest Tea Experiences
-        </motion.h1>
-        
-        <motion.p 
-          className="text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto mb-10 text-brand-cream/90"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          From the tea gardens of Nepal to tea lovers around the world.
-        </motion.p>
+          <motion.h1 
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-6"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
+          >
+            Crafting Nepal's <br/> Finest Tea Experiences
+          </motion.h1>
+          
+          <motion.p 
+            className="text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto mb-10 text-brand-cream/90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            From the tea gardens of Nepal to tea lovers around the world.
+          </motion.p>
+        </motion.div>
         
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -65,12 +76,12 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 w-full sm:w-auto"
         >
-          <button className="px-8 py-4 bg-brand-gold text-brand-dark-green font-medium tracking-wide uppercase rounded-full hover:bg-white transition-colors w-full sm:w-auto">
+          <Link to="/story" className="px-8 py-4 bg-brand-gold text-brand-dark-green font-medium tracking-wide uppercase rounded-full hover:bg-white transition-colors w-full sm:w-auto inline-block text-center">
             Explore Our Story
-          </button>
-          <button className="px-8 py-4 border border-white/50 text-white font-medium tracking-wide uppercase rounded-full hover:bg-white hover:text-brand-dark-green transition-colors w-full sm:w-auto">
+          </Link>
+          <Link to="/products" className="px-8 py-4 border border-white/50 text-white font-medium tracking-wide uppercase rounded-full hover:bg-white hover:text-brand-dark-green transition-colors w-full sm:w-auto inline-block text-center">
             Explore Products
-          </button>
+          </Link>
         </motion.div>
       </div>
 

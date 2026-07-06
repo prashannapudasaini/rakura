@@ -73,6 +73,24 @@ const WhyRakura = () => {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Trust Badges */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-32 pt-16 border-t border-brand-black/10 text-center"
+        >
+          <h3 className="font-sans text-sm tracking-widest text-brand-black/40 uppercase font-bold mb-10">Internationally Certified & Recognized</h3>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            {['ISO 9001:2015', 'USDA Organic', 'EU Organic', 'HACCP Certified', 'FDA Approved'].map((cert, i) => (
+              <div key={i} className="flex items-center justify-center h-16 px-6 border-2 border-brand-black/20 rounded-xl font-serif text-xl text-brand-black/80 hover:border-brand-gold hover:text-brand-dark-green transition-colors cursor-default">
+                {cert}
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

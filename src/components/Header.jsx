@@ -38,11 +38,12 @@ const Header = () => {
         <Link to="/story" className="hover:text-brand-gold transition-colors cursor-pointer">Our Story</Link>
         <Link to="/factory" className="hover:text-brand-gold transition-colors cursor-pointer">Factory</Link>
         <Link to="/teas" className="hover:text-brand-gold transition-colors cursor-pointer">Teas</Link>
+        <Link to="/products" className="hover:text-brand-gold transition-colors cursor-pointer">Products</Link>
         <Link to="/sustainability" className="hover:text-brand-gold transition-colors cursor-pointer">Sustainability</Link>
         <Link to="/contact" className="hover:text-brand-gold transition-colors cursor-pointer">Contact</Link>
       </nav>
 
-      <Link to="/teas" className={`px-6 py-2 border rounded-full text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${
+      <Link to="/products" className={`px-6 py-2 border rounded-full text-sm font-medium tracking-wide uppercase transition-colors cursor-pointer ${
         isDarkHeader ? 'border-brand-dark-green text-brand-dark-green hover:bg-brand-dark-green hover:text-white' : 'border-white text-white hover:bg-white hover:text-brand-dark-green'
       }`}>
         Explore Products

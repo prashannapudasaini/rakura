@@ -21,6 +21,18 @@ const Contact = () => {
               <form className="flex flex-col gap-4">
                 <input type="text" placeholder="Name" className="bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-brand-gold" />
                 <input type="email" placeholder="Email" className="bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-brand-gold" />
+                <div className="relative">
+                  <select defaultValue="" className="w-full bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white/70 focus:outline-none focus:border-brand-gold appearance-none">
+                    <option value="" disabled>Inquiry Type</option>
+                    <option value="wholesale" className="bg-brand-dark-green text-white">Wholesale & Bulk Orders</option>
+                    <option value="oem" className="bg-brand-dark-green text-white">Private Label / OEM</option>
+                    <option value="distribution" className="bg-brand-dark-green text-white">Global Distribution</option>
+                    <option value="general" className="bg-brand-dark-green text-white">General Inquiry</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/50">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  </div>
+                </div>
                 <textarea placeholder="Message" rows="4" className="bg-white/5 border border-white/20 rounded-lg px-4 py-3 text-white placeholder-white/50 focus:outline-none focus:border-brand-gold"></textarea>
                 <button className="bg-brand-gold text-brand-dark-green font-medium py-3 rounded-lg hover:bg-white transition-colors">
                   Send Message

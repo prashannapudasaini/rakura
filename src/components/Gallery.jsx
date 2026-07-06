@@ -3,7 +3,7 @@ import React from 'react';
 import blackImg from '../assets/black_tea.webp';
 import greenImg from '../assets/green_tea.webp';
 import orthodoxImg from '../assets/orthodox.webp';
-import ctcImg from '../assets/ctc.webp';
+import ctcImg from '../assets/allproducts.png';
 
 const galleryImages = [
   {

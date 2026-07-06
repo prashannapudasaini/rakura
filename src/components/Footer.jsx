@@ -18,6 +18,11 @@ const Footer = () => {
             <p className="text-white/70 font-light text-sm leading-relaxed mb-8">
               Pioneering Nepal's tea industry since 1973. Sustainably sourced, ethically produced, and globally loved.
             </p>
+            <div className="flex gap-3 mb-10 flex-wrap">
+              <div className="border border-white/20 rounded-md px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/60 uppercase hover:bg-white/5 transition-colors cursor-default">ISO 22000</div>
+              <div className="border border-white/20 rounded-md px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/60 uppercase hover:bg-white/5 transition-colors cursor-default">USDA Organic</div>
+              <div className="border border-white/20 rounded-md px-3 py-1.5 text-[10px] font-bold tracking-widest text-white/60 uppercase hover:bg-white/5 transition-colors cursor-default">HACCP Certified</div>
+            </div>
             <div className="flex flex-col gap-4">
               <span className="font-sans font-bold tracking-widest text-xs uppercase text-white/50">Join our newsletter</span>
               <div className="flex">

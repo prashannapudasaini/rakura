@@ -1,131 +1,289 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Factory = () => {
+  const { scrollYProgress } = useScroll();
+  const yParallax = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+
   return (
-    <main className="bg-brand-black pt-24 min-h-screen text-brand-white">
-      {/* Factory Hero */}
-      <section className="py-24 px-6 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-dark-green/20 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div className="container mx-auto max-w-7xl relative z-10 text-center">
+    <main className="bg-white text-gray-900 overflow-hidden">
+      
+      {/* SECTION 1: Cinematic Hero */}
+      <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-gray-50">
+        <motion.div 
+          className="absolute inset-0 bg-cover bg-center grayscale mix-blend-multiply opacity-40"
+          style={{ 
+            backgroundImage: "url('https://images.unsplash.com/photo-1581452934444-e209804e1eec?q=80&w=2000&auto=format&fit=crop')",
+            y: yParallax
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/80 to-white"></div>
+        
+        <div className="relative z-10 text-center px-6 mt-20 max-w-5xl mx-auto">
           <motion.span 
-            className="font-sans font-bold tracking-widest text-sm text-brand-gold uppercase mb-6 block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1 }}
+            className="font-sans font-bold tracking-widest text-sm text-gray-500 uppercase mb-8 block"
           >
-            Innovation Meets Tradition
+            The Apex of Himalayan Manufacturing
           </motion.span>
           <motion.h1 
-            className="font-serif text-5xl md:text-7xl font-medium mb-8 text-brand-white"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-brand-dark-green leading-tight drop-shadow-sm"
           >
-            State-of-the-Art Processing
+            Precision in Every Leaf.<br/>
+            <span className="text-gray-400 font-light italic">Perfection in Every Cup.</span>
           </motion.h1>
-          <motion.p 
-            className="text-lg md:text-xl font-light max-w-3xl mx-auto text-brand-white/70 leading-relaxed mb-16"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Step into our modern facilities where cutting-edge technology and century-old orthodox methods intertwine to preserve the delicate flavor profiles of Himalayan tea.
-          </motion.p>
         </div>
+      </section>
 
-        {/* Bento Box Layout */}
-        <div className="container mx-auto max-w-6xl pb-24">
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Box 1: Large Image */}
-            <div className="md:col-span-2 md:row-span-2 relative rounded-[2rem] overflow-hidden group aspect-square md:aspect-auto min-h-[400px]">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1629840428984-27bc8059868c?q=80&w=1200&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"></div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-              <div className="absolute bottom-8 left-8 right-8 z-10">
-                <h3 className="font-serif text-3xl md:text-4xl font-medium mb-3">The Orthodox Method</h3>
-                <p className="font-light text-white/80 max-w-md">Preserving the integrity of the whole leaf through traditional rolling and controlled oxidation.</p>
+      {/* SECTION 2: The Philosophy */}
+      <section className="py-32 bg-white relative z-20">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1 }}
+              className="lg:w-1/2 w-full"
+            >
+              <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl relative bg-gray-100">
+                <img src="https://images.unsplash.com/photo-1558169123-d34e9e03d42b?q=80&w=1200&auto=format&fit=crop" alt="Precision" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-brand-gold/10 mix-blend-color"></div>
               </div>
-            </div>
-
-            {/* Box 2: Stat */}
-            <div className="bg-brand-white/5 backdrop-blur-md border border-brand-white/10 rounded-[2rem] p-8 flex flex-col justify-center items-center text-center group hover:bg-brand-white/10 transition-colors">
-              <span className="font-serif text-6xl text-brand-gold mb-2 group-hover:scale-110 transition-transform duration-300">5M+</span>
-              <span className="font-sans text-sm tracking-widest uppercase text-brand-white/60">KGs Processed Annually</span>
-            </div>
-
-            {/* Box 3: Detail */}
-            <div className="bg-brand-dark-green rounded-[2rem] p-8 flex flex-col justify-between group overflow-hidden relative">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558169123-d34e9e03d42b?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay group-hover:opacity-40 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-full border border-brand-gold/30 flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-                </div>
-                <h3 className="font-serif text-2xl font-medium mb-3 text-white">Quality Control</h3>
-                <p className="font-light text-white/70 text-sm leading-relaxed">Every batch undergoes rigorous lab testing to ensure zero chemical residue and perfect flavor consistency.</p>
-              </div>
-            </div>
-
-            {/* Box 4: Wide feature */}
-            <div className="md:col-span-3 bg-brand-cream text-brand-black rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 group">
-              <div className="md:w-1/2">
-                <span className="font-sans font-bold tracking-widest text-xs text-brand-gold uppercase mb-3 block">Technology</span>
-                <h3 className="font-serif text-4xl font-medium mb-4">Precision CTC Manufacturing</h3>
-                <p className="font-light text-brand-black/70 leading-relaxed mb-6">
-                  For our robust blends, our state-of-the-art Crush, Tear, Curl (CTC) machines ensure a uniform cut, allowing for a quicker, stronger infusion perfectly suited for milk teas and spiced chais.
-                </p>
-                <div className="text-brand-dark-green font-medium uppercase tracking-wider text-sm flex items-center gap-2 cursor-pointer group-hover:gap-4 transition-all">
-                  Explore Processing
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </div>
-              </div>
-              <div className="md:w-1/2 w-full aspect-video rounded-2xl overflow-hidden relative">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581452934444-e209804e1eec?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"></div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Process Steps */}
-        <div className="py-24 bg-brand-white text-brand-black w-[100vw] relative left-1/2 -translate-x-1/2 -mb-24">
-          <div className="container mx-auto max-w-7xl px-6">
-            <div className="text-center mb-16">
-              <span className="font-sans font-bold tracking-widest text-xs text-brand-gold uppercase mb-3 block">Our Process</span>
-              <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6 text-brand-dark-green">From Leaf to Cup</h2>
-              <p className="text-lg font-light text-brand-black/70 max-w-2xl mx-auto">
-                Discover the meticulous steps we take to transform freshly plucked green leaves into the world's finest tea.
-              </p>
-            </div>
+            </motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {[
-                { step: "01", title: "Withering", desc: "Freshly plucked leaves are spread out in climate-controlled troughs to reduce moisture content by up to 70%, making them pliable for rolling." },
-                { step: "02", title: "Rolling", desc: "The withered leaves are gently rolled in traditional orthodox rollers to break their cell walls, releasing the natural essential oils." },
-                { step: "03", title: "Oxidation", desc: "The rolled leaves are spread in cool, humid rooms where they absorb oxygen, turning from green to copper and developing their complex flavors." },
-                { step: "04", title: "Firing", desc: "Finally, the leaves are passed through hot air dryers to halt oxidation, sealing in the flavor and extending their shelf life." }
-              ].map((item, index) => (
-                <motion.div 
-                  key={item.step}
-                  className="bg-brand-cream p-8 rounded-[2rem] hover:-translate-y-4 transition-transform duration-500 shadow-sm hover:shadow-xl relative overflow-hidden group"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                >
-                  <span className="absolute -top-4 -right-4 text-8xl font-serif text-brand-gold/10 font-bold group-hover:text-brand-gold/20 transition-colors">{item.step}</span>
-                  <h3 className="font-serif text-2xl font-medium mb-4 text-brand-dark-green relative z-10">{item.title}</h3>
-                  <p className="font-light text-brand-black/70 leading-relaxed text-sm relative z-10">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="lg:w-1/2 w-full"
+            >
+              <span className="font-sans font-bold tracking-widest text-sm text-brand-gold uppercase mb-6 block">Where Tradition Meets Technology</span>
+              <h2 className="font-serif text-4xl md:text-5xl font-medium mb-8 text-gray-900 leading-tight">
+                Architecting the Future of Tea
+              </h2>
+              <div className="space-y-6 text-lg font-light text-gray-600 leading-relaxed">
+                <p>
+                  While our terroir and plucking methods remain deeply rooted in century-old traditions, our manufacturing is unapologetically futuristic. 
+                </p>
+                <p>
+                  We have engineered a state-of-the-art facility in Haldibari, Jhapa, designed to bridge the gap between the organic chaos of nature and the exacting standards of global food safety. Here, the romance of the Himalayas is processed with surgical precision.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      {/* SECTION 3: The Scale of Excellence */}
+      <section className="py-32 bg-brand-black text-brand-white">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6">The Scale of Excellence</h2>
+            <p className="font-light text-xl text-white/60 max-w-2xl mx-auto">Engineered to deliver uncompromising quality at a global scale.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { value: "Zero", label: "Human Touch", desc: "Fully automated processing lines ensure absolute hygiene from withering to packaging." },
+              { value: "5M+", label: "KGs Annually", desc: "Our massive processing capacity is designed to fulfill the demands of the global market." },
+              { value: "100%", label: "Traceability", desc: "Every batch can be traced back to the exact garden, elevation, and day it was plucked." }
+            ].map((stat, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: idx * 0.2 }}
+                className="bg-white/5 border border-white/10 rounded-3xl p-10 hover:bg-white/10 transition-colors"
+              >
+                <div className="font-serif text-6xl text-brand-gold mb-4">{stat.value}</div>
+                <h3 className="font-sans font-bold tracking-widest uppercase text-sm mb-4">{stat.label}</h3>
+                <p className="font-light text-white/60 leading-relaxed">{stat.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4 & 5: Orthodox vs CTC Processing */}
+      <section className="py-32 bg-gray-50">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <div className="text-center mb-20">
+            <span className="font-sans font-bold tracking-widest text-sm text-gray-500 uppercase mb-4 block">Manufacturing Capabilities</span>
+            <h2 className="font-serif text-4xl md:text-5xl font-medium text-gray-900">Mastery Over Method</h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Orthodox */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100"
+            >
+              <div className="aspect-video bg-gray-200 rounded-2xl mb-8 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1629840428984-27bc8059868c?q=80&w=800&auto=format&fit=crop" alt="Orthodox" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-serif text-3xl font-medium mb-4 text-brand-dark-green">Orthodox Processing</h3>
+              <p className="font-light text-gray-600 leading-relaxed mb-6">
+                Preserving the integrity of the whole leaf. Our orthodox machinery gently rolls and oxidizes the tea to coax out delicate, nuanced flavor profiles—perfect for our premium black and green teas.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-500 font-medium">
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div> Complex Flavor Profiles</li>
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div> Whole Leaf Preservation</li>
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div> Traditional Rolling</li>
+              </ul>
+            </motion.div>
+
+            {/* CTC */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white p-10 rounded-3xl shadow-xl border border-gray-100"
+            >
+              <div className="aspect-video bg-gray-200 rounded-2xl mb-8 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1596547609652-9cb5d8d11c76?q=80&w=800&auto=format&fit=crop" alt="CTC" className="w-full h-full object-cover grayscale mix-blend-multiply opacity-80" />
+              </div>
+              <h3 className="font-serif text-3xl font-medium mb-4 text-brand-dark-green">Precision CTC</h3>
+              <p className="font-light text-gray-600 leading-relaxed mb-6">
+                Engineered for strength. Our Crush, Tear, Curl (CTC) lines operate with micro-millimeter precision, ensuring a perfectly uniform cut for a quicker, stronger infusion ideal for robust blends.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-500 font-medium">
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-dark-green"></div> Robust, Strong Infusion</li>
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-dark-green"></div> Uniform Granulation</li>
+                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-brand-dark-green"></div> High-Speed Automation</li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: The Transformation (Vertical Timeline) */}
+      <section className="py-32 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="text-center mb-24">
+            <h2 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-6">The Transformation</h2>
+            <p className="font-light text-xl text-gray-500">The meticulous journey from raw leaf to refined tea.</p>
+          </div>
+
+          <div className="relative border-l border-gray-200 ml-4 md:ml-1/2 md:-translate-x-1/2">
+            {[
+              { title: "Withering", desc: "Fresh leaves are climate-controlled to reduce moisture by 70%, becoming pliable." },
+              { title: "Rolling & Cutting", desc: "Depending on the method (Orthodox or CTC), leaves are shaped or granulated to release oils." },
+              { title: "Oxidation", desc: "Leaves rest in highly controlled humid environments, developing their color and character." },
+              { title: "Firing", desc: "High-temperature drying halts oxidation, locking in the flavor profile instantly." },
+              { title: "Sorting", desc: "Optical sorters and grading machines perfectly categorize leaves by size and weight." }
+            ].map((step, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className={`relative pl-8 md:pl-0 py-8 ${idx % 2 === 0 ? 'md:pr-12 md:text-right md:ml-0 md:-left-px' : 'md:pl-12 md:ml-0 md:left-1/2'}`}
+              >
+                <div className={`absolute top-10 left-[-5px] md:top-10 w-3 h-3 bg-brand-gold rounded-full ring-4 ring-white ${idx % 2 === 0 ? 'md:left-auto md:-right-[6px]' : 'md:-left-[6px]'}`}></div>
+                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:shadow-lg transition-shadow">
+                  <span className="text-brand-gold font-sans font-bold tracking-widest text-xs uppercase mb-2 block">Stage 0{idx + 1}</span>
+                  <h3 className="font-serif text-2xl font-medium mb-3 text-gray-900">{step.title}</h3>
+                  <p className="font-light text-gray-600">{step.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: Uncompromising Quality */}
+      <section className="py-32 bg-gray-900 text-white overflow-hidden">
+        <div className="container mx-auto px-6 max-w-7xl relative">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="lg:w-1/2"
+            >
+              <h2 className="font-serif text-4xl md:text-6xl font-medium mb-8 leading-tight">
+                Uncompromising Quality Control.
+              </h2>
+              <p className="text-xl font-light text-gray-400 leading-relaxed mb-12">
+                Our in-house laboratories test every single batch for flavor consistency, moisture content, and chemical residue. We guarantee that the purity of the Himalayas reaches you completely uncompromised.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-6">
+                 {['ISO 22000', 'HACCP Certified', 'FDA Approved', 'USDA Organic'].map((cert, i) => (
+                   <div key={i} className="flex items-center gap-4 border border-gray-700 rounded-xl p-4 bg-gray-800/50">
+                     <div className="w-8 h-8 rounded-full bg-brand-gold/20 flex items-center justify-center flex-shrink-0">
+                       <div className="w-3 h-3 bg-brand-gold rounded-full"></div>
+                     </div>
+                     <span className="font-sans font-bold tracking-wider text-xs uppercase text-gray-300">{cert}</span>
+                   </div>
+                 ))}
+              </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="lg:w-1/2 w-full"
+            >
+              <div className="aspect-[4/3] bg-gray-800 rounded-3xl overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1574682782782-96515814594c?q=80&w=1200&auto=format&fit=crop" alt="Laboratory" className="w-full h-full object-cover opacity-60 mix-blend-luminosity" />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: The Invitation */}
+      <section className="py-40 bg-brand-dark-green text-white text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
+        <div className="container mx-auto px-6 relative z-10 max-w-4xl">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="font-serif text-5xl md:text-7xl font-medium mb-10"
+          >
+            Ready to Scale Your Tea Business?
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-xl font-light text-white/80 mb-12"
+          >
+            Partner with a world-class manufacturing facility capable of meeting the highest international standards.
+          </motion.p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <a href="/contact" className="inline-block px-12 py-5 bg-brand-gold text-brand-dark-green font-bold tracking-widest uppercase rounded-full hover:bg-white transition-colors shadow-2xl hover:shadow-brand-gold/20">
+              Request Wholesale Quote
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
     </main>
   );
 };

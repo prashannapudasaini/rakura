@@ -1,4 +1,5 @@
 import React from 'react';
+import connectingCultureImg from '../assets/connecting_culture.png';
 
 const stats = [
   { value: "15+", label: "Countries Exported To" },
@@ -12,7 +13,7 @@ const GlobalExports = () => {
     <section id="exports" className="py-32 bg-brand-white text-brand-black relative overflow-hidden">
       {/* Abstract map background pattern */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, black 1px, transparent 0)', backgroundSize: '32px 32px' }}></div>
-      
+
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 text-center lg:text-left">
@@ -21,7 +22,7 @@ const GlobalExports = () => {
             <p className="text-xl font-light text-brand-black/70 mb-12 max-w-2xl mx-auto lg:mx-0">
               From the pristine high altitudes of Nepal, Rakura has established a global footprint, bringing the authentic taste of Himalayan tea to connoisseurs across continents.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="border-l-2 border-brand-gold pl-6 py-2">
@@ -31,10 +32,10 @@ const GlobalExports = () => {
               ))}
             </div>
           </div>
-          
+
           <div className="lg:w-1/2 w-full">
             <div className="aspect-[4/3] relative rounded-[2.5rem] overflow-hidden bg-brand-cream border border-black/5 shadow-2xl group">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526436166440-410a56828551?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 opacity-90"></div>
+              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 opacity-90" style={{ backgroundImage: `url(${connectingCultureImg})` }}></div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-10 left-10 right-10 text-white">
                 <h3 className="font-serif text-3xl font-medium mb-2">Connecting Cultures</h3>

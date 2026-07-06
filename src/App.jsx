@@ -10,6 +10,8 @@ import Teas from './pages/Teas';
 import SustainabilityPage from './pages/SustainabilityPage';
 import ContactPage from './pages/ContactPage';
 
+import AllProducts from './pages/AllProducts';
+
 function App() {
   return (
     <HelmetProvider>
@@ -26,6 +28,7 @@ function App() {
               <Route path="story" element={<Story />} />
               <Route path="factory" element={<Factory />} />
               <Route path="teas" element={<Teas />} />
+              <Route path="products" element={<AllProducts />} />
               <Route path="sustainability" element={<SustainabilityPage />} />
               <Route path="contact" element={<ContactPage />} />
             </Route>

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import blackImg from '../assets/black_tea.webp';
 import greenImg from '../assets/green_tea.webp';
 import orthodoxImg from '../assets/orthodox.webp';
-import ctcImg from '../assets/ctc.webp';
+import ctcImg from '../assets/allproducts.png';
 import herbalImg from '../assets/herbal.webp';
 import orangeImg from '../assets/orange.webp';
 
@@ -67,9 +67,12 @@ const Products = () => {
             />
 
             <h3 className={`font-serif text-4xl mb-4 ${activeProduct.accent}`}>{activeProduct.name}</h3>
-            <p className={`text-xl font-light max-w-md ${activeProduct.id === 'green' || activeProduct.id === 'orthodox' || activeProduct.id === 'herbal' || activeProduct.id === 'flavoured' ? 'text-black/70' : 'text-white/70'}`}>
+            <p className={`text-xl font-light max-w-md mb-8 ${activeProduct.id === 'green' || activeProduct.id === 'orthodox' || activeProduct.id === 'herbal' || activeProduct.id === 'flavoured' ? 'text-black/70' : 'text-white/70'}`}>
               {activeProduct.desc}
             </p>
+            <button className={`px-8 py-3 rounded-full font-medium tracking-wide uppercase text-sm border transition-colors ${activeProduct.id === 'green' || activeProduct.id === 'orthodox' || activeProduct.id === 'herbal' || activeProduct.id === 'flavoured' ? 'border-brand-dark-green text-brand-dark-green hover:bg-brand-dark-green hover:text-white' : 'border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-dark-green'}`}>
+              Request Wholesale Quote
+            </button>
           </motion.div>
         </AnimatePresence>
       </div>
