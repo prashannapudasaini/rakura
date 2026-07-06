@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark-green: #0F3D2E;
+  --color-brand-tea-green: #2D6A4F;
+  --color-brand-sage: #95D5B2;
+  --color-brand-cream: #F8F4EA;
+  --color-brand-gold: #C8A45D;
+  --color-brand-black: #121212;
+  --color-brand-white: #FFFFFF;
+
+  --color-product-black-bg: #111111;
+  --color-product-black-accent: #D4AF37;
+  
+  --color-product-green-bg: #EAF7EC;
+  --color-product-green-accent: #2D6A4F;
+
+  --color-product-orthodox-bg: #F7F1E8;
+  --color-product-orthodox-accent: #8B5E34;
+
+  --color-product-ctc-bg: #24180F;
+  --color-product-ctc-accent: #C77D32;
+
+  --color-product-herbal-bg: #EEF8F0;
+  --color-product-herbal-accent: #5C946E;
+
+  --font-sans: 'Inter', 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+/* Custom base styles */
+@layer base {
+  body {
+    @apply bg-brand-white text-brand-black font-sans antialiased;
+  }
+}
+
+/* Lenis Recommended Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Utilities for Glassmorphism & specific effects */
+@layer utilities {
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-md border border-white/10;
+  }
+  .glass-light {
+    @apply bg-white/40 backdrop-blur-md border border-white/20;
+  }
+}
